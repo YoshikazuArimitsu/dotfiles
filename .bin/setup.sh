@@ -13,6 +13,10 @@ python3 -m venv ~/.py36
 . ~/.nvm/nvm.sh
 nvm install node --lts
 
-echo '. ./dotfiles/.bashrc' >> ~/.bashrc
+echo '. ~/dotfiles/.bashrc' >> ~/.bashrc
 
 cp -prf .config ~
+cp -prf .emacs ~
+
+# 
+mkdir ~/bin

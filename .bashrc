@@ -140,9 +140,9 @@ alias git-branch-d='git branch | peco | xargs git branch -d'
 alias git-branch-D='git branch | peco | xargs git branch -D'
 
 # CUDA
-export PATH=$PATH:/usr/local/cuda/bin
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/lib/x86_64-linux-gnu
-export CPATH=$CPATH:/usr/local/cuda/include
+# export PATH=$PATH:/usr/local/cuda/bin
+# export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/lib/x86_64-linux-gnu
+# export CPATH=$CPATH:/usr/local/cuda/include
 
 # 複数タブ間ヒストリ共有
 export PROMPT_COMMAND="history -a"
@@ -171,7 +171,7 @@ if [ "$TERM" != "linux" ]; then
 fi
 
 # default python venv
-. $HOME/.py36/bin/activate
+#. $HOME/.py36/bin/activate
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
