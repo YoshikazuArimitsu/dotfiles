@@ -15,8 +15,8 @@ nvm install node --lts
 
 echo '. ~/dotfiles/.bashrc' >> ~/.bashrc
 
-cp -prf .config ~
-cp -prf .emacs ~
+cp -prf ~/dotfiles/.config ~
+cp -prf ~/dotfiles/.emacs ~
 
 # 
 mkdir ~/bin
