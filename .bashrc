@@ -134,6 +134,13 @@ peco-select-history() {
 }
 bind -x '"\C-r": peco-select-history'
 
+peco-select-env() {
+    declare l=$(export | cut -f 3 -d ' ' | peco | echo "\${`cut -f 1 -d '='`}")
+    READLINE_LINE="$READLINE_LINE $l"
+    READLINE_POINT=${#READLINE_LINE}
+}
+bind -x '"\C-n": peco-select-env'
+
 # Git&peco
 alias git-checkout='git branch -a | cut -b 3- | perl -pe '\''s#^remotes/origin/###'\'' | perl -nlE '\''say if !$c{$_}++'\'' | grep -v -- "->" | peco | xargs git checkout'
 alias git-branch-d='git branch | peco | xargs git branch -d'
@@ -171,7 +178,7 @@ if [ "$TERM" != "linux" ]; then
 fi
 
 # default python venv
-#. $HOME/.py36/bin/activate
+. $HOME/.py36/bin/activate
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
