@@ -203,20 +203,21 @@ export PATH=$GOROOT/bin:$GOPATH/bin:$PATH
 # direnv
 eval "$(direnv hook bash)"
 
-# Powerline Shell
+# Powerline go
 function _update_ps1() {
-    PS1="$(~/.local/bin/powerline-shell $?)"
+    PS1="$($HOME/bin/powerline-go -error $? -jobs $(jobs -p | wc -l))"
+
+    # Uncomment the following line to automatically clear errors after showing
+    # them once. This not only clears the error for powerline-go, but also for
+    # everything else you run in that shell. Don't enable this if you're not
+    # sure this is what you want.
+
+    #set "?"
 }
 
-if [ "$TERM" != "linux" ]; then
+if [ "$TERM" != "linux" ] && [ -f "$HOME/bin/powerline-go" ]; then
     PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 fi
 
 # default python venv
 #. $HOME/.py36/bin/activate
-
-# nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-nvm use default
