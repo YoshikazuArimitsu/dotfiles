@@ -181,6 +181,8 @@ alias git-checkout='git branch -a | cut -b 3- | perl -pe '\''s#^remotes/origin/#
 alias git-branch-d='git branch | peco | xargs git branch -d'
 alias git-branch-D='git branch | peco | xargs git branch -D'
 
+
+
 # CUDA
 # export PATH=$PATH:/usr/local/cuda/bin
 # export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/lib/x86_64-linux-gnu
@@ -191,6 +193,7 @@ export PROMPT_COMMAND="history -a"
 
 # open
 alias open='xdg-open'
+alias od1='od -tx1z -Ax'
 
 # デフォルトエディタ
 export EDITOR=vim
@@ -205,7 +208,7 @@ eval "$(direnv hook bash)"
 
 # Powerline go
 function _update_ps1() {
-    PS1="$($HOME/bin/powerline-go -error $? -jobs $(jobs -p | wc -l))"
+    PS1="$($HOME/bin/powerline-go -error $? -jobs $(jobs -p | wc -l) -cwd-max-depth 3 -cwd-max-dir-size 8)"
 
     # Uncomment the following line to automatically clear errors after showing
     # them once. This not only clears the error for powerline-go, but also for
