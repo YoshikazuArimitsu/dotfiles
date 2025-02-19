@@ -2,7 +2,8 @@
 
 mkdir ~/bin
 
-sudo apt install -y peco direnv tig
+sudo apt-get update
+sudo apt-get install -y peco direnv tig
 
 # install powerline-go
 cd ~/bin
@@ -12,12 +13,20 @@ mv powerline-go-linux-amd64 powerline-go
 chmod +x powerline-go
 
 # install lazygit
-sudo add-apt-repository ppa:lazygit-team/release -y
-sudo apt install -y lazygit
+# sudo add-apt-repository ppa:lazygit-team/release -y
+# sudo apt-get update
+# sudo apt-get install -y lazygit
+
+sudo apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common -y
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+sudo apt-get update
+sudo apt install docker-ce docker-ce-cli containerd.io
+
 
 # install config
 git config --global user.name Y.Arimitsu
-git config --global user.email yoshikazu_arimitsu@albert2005.co.jp
+git config --global user.email yarimit@gmail.com
 
 echo '. ~/dotfiles/.bashrc' >> ~/.bashrc
 
